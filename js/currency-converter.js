@@ -220,14 +220,21 @@ $(document).ready(() => {
 		}
 
 		initToasts() {
+			if (!navigator.onLine){
+				this.displayOfflineToast();
+			}
 			window.addEventListener('offline', () => {
-				const toast = M.toast({html: 'Unable to connect. Retrying...', 'displayLength': 1000 * 1000 * 1000});
+				this.displayOfflineToast();
 			});
 			window.addEventListener('online', () => {
 				const toastElement = document.querySelector('.toast');
 				const toastInstance = M.Toast.getInstance(toastElement);
 				toastInstance.dismiss();
 			});
+		}
+
+		displayOfflineToast() {
+			const toast = M.toast({html: 'Unable to connect. Retrying...', 'displayLength': 1000 * 1000 * 1000});
 		}
 
 	}
