@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <!--Import our css -->
+      <link type="text/css" rel="stylesheet" href="css/currency-converter.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m10 push-m1 l8 push-l2 xl6 push-xl3">
+            <div class="card">
+              <div class="card-content">
+                <div class="card-content__header hidden">
+                  <div class="source-label">
+                    <span id="src-amount" class="source-label__amount"></span>
+                    <span id="src-name" class="source-label__name"></span>&nbsp; equals
+                  </div>
+                  <div class="target-label">
+                    <span id="tgt-amount" class="target-label__amount"></span>
+                    <span id="tgt-name" class="target-label__name"></span>
+                  </div>
+                </div>
+                <div class="card-content__body">
+                  <table class="conversion-table">
+                    <tbody>
+                      <tr>
+                        <td><input type="number" id="src-input" class="currency-input"></td>
+                        <td>
+                          <select id="src-selector" class="currency-selector">
+                            <option disabled="disabled" selected="selected">Select a currency</option>
+                          </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><input type="number" id="tgt-input" class="currency-input"></td>
+                        <td>
+                          <select id="tgt-selector" class="currency-selector">
+                            <option disabled="disabled" selected="selected">Select a currency</option>
+                          </select>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/jquery.min.js"></script>
+      <script type="text/javascript" src="js/idb.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript" src="js/currency-converter.js"></script>
+    </body>
+  </html>

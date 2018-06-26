@@ -1,0 +1,25 @@
+tr {
+	border: none;
+}
+
+.hidden {
+	display: none;
+}
+
+.source-label {
+	font-size: medium;
+	color: #878787;
+}
+
+.target-label {
+	font-size: xx-large;
+}
+
+body {
+	position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: url(../images/cactus.png);	
+}
