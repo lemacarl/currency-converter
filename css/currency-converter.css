@@ -28,3 +28,9 @@ tr {
 .btn-flat {
 	color: #fff;
 }
+
+@media screen and (max-width: 500px) {
+	tr td:nth-child(2) {
+		width: 65%;
+	}
+}
