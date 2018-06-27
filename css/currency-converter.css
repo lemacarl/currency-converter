@@ -21,5 +21,6 @@ body {
     right: 0;
     left: 0;
     bottom: 0;
-    background: url(../images/cactus.png);	
+    background: url(../images/cactus.png) no-repeat;
+    background-position-x: center;	
 }
