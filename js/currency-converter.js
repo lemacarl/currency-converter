@@ -95,17 +95,18 @@ class CurrencyConverter {
 			store.getAll()
 				.then(currencies => {
 					if (currencies.length === 0) {
-						$.when(
-							$.get('https://free.currencyconverterapi.com/api/v5/currencies')
-						)
+						fetch('https://free.currencyconverterapi.com/api/v5/currencies')
+						.then(response => response.json())
 						.then(({results}) => {
-							const currencies = [];
-							store = db.transaction('currencies', 'readwrite').objectStore('currencies');
-							Object.keys(results).map(key => {
-								store.put(results[key], key);
-								currencies.push(results[key]);
-							});
-							this.renderCurrencies(currencies);
+							if (results) {
+								const currencies = [];
+								store = db.transaction('currencies', 'readwrite').objectStore('currencies');
+								Object.keys(results).map(key => {
+									store.put(results[key], key);
+									currencies.push(results[key]);
+								});
+								this.renderCurrencies(currencies);
+							}
 						});
 					}
 					this.renderCurrencies(currencies);
@@ -123,9 +124,8 @@ class CurrencyConverter {
 	}
 
 	fetchRate(src, tgt) {
-		return $.when(
-			$.get(`https://free.currencyconverterapi.com/api/v5/convert?q=${src}_${tgt}&compact=ultra`)
-		);
+		return fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${src}_${tgt}&compact=ultra`)
+			.then(response => response.json());
 	}
 
 	onChange(event) {
