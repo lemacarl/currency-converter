@@ -1,0 +1,21 @@
+{
+  "short_name": "Currency Converter",
+  "name": "Currency Converter",
+  "icons": [
+    {
+      "src": "/images/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0000FF",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#0000FF"
+}
