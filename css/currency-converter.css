@@ -34,3 +34,9 @@ tr {
 		width: 65%;
 	}
 }
+
+@media screen and (max-height: 600px) {
+	body {
+		background-position-y: -50%;
+	}
+}
