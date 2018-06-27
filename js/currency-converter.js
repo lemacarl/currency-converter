@@ -11,6 +11,8 @@ class CurrencyConverter {
 
 		this.currencies = null;
 
+		this.deferredPrompt = null;
+
 		this.dbPromise = openDatabase();
 
 		this.initSelectors();
@@ -18,6 +20,7 @@ class CurrencyConverter {
 		this.initInputs();
 		this.registerServiceWorker();
 		this.initToasts();
+		this.initInstallPrompt();
 
 		this.onChange = this.onChange.bind(this);
 		this.onInput = this.onInput.bind(this);
@@ -51,13 +54,12 @@ class CurrencyConverter {
 	}
 
 	updateReady(worker) {
-		const toastHTML = `<span>New version available.</span><button class="btn-flat toast-action">Refresh</button>`;
 		const toast = M.toast({
-			html: toastHTML,
+			html: `<span>New version available.</span><button class="btn-flat toast-update">Refresh</button>`,
 			displayLength: 1000 * 1000 * 1000
 		});
 
-		$('.toast-action').click(event => {
+		$('.toast-update').click(event => {
 			event.preventDefault();
 			worker.postMessage({action: 'skipWaiting'});
 		});
@@ -225,14 +227,39 @@ class CurrencyConverter {
 			this.displayOfflineToast();
 		});
 		window.addEventListener('online', () => {
-			const toastElement = document.querySelector('.toast');
-			const toastInstance = M.Toast.getInstance(toastElement);
-			toastInstance.dismiss();
+			this.dismissToast('.toast');
 		});
 	}
 
 	displayOfflineToast() {
 		const toast = M.toast({html: 'Unable to connect. Retrying...', 'displayLength': 1000 * 1000 * 1000});
+	}
+
+	initInstallPrompt() {
+		window.addEventListener('beforeinstallprompt', event => {
+			event.preventDefault();
+			this.deferredPrompt = event;
+
+			const toast = M.toast({
+				html: `<span>Convert currencies on the go.</span><button class="btn-flat toast-install">Add to Home screen</button>`,
+				displayLength: 10000
+			});
+
+			$('.toast-install').click(e => {
+				e.preventDefault();
+				this.dismissToast('.toast');
+				this.deferredPrompt.prompt();
+				this.deferredPrompt.userChoice.then((result) => {
+					this.deferredPrompt = null;
+				});
+			});
+		});
+	}
+
+	dismissToast(selector) {
+		const toastElement = document.querySelector(selector);
+		const toastInstance = M.Toast.getInstance(toastElement);
+		toastInstance.dismiss();
 	}
 
 }
