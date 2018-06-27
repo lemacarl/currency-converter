@@ -10,7 +10,6 @@ self.addEventListener('install', event => {
 				'js/materialize.min.js',
 				'js/currency-converter.js',
 				'https://fonts.googleapis.com/icon?family=Material+Icons',
-				'https://free.currencyconverterapi.com/api/v5/currencies',
 				'css/materialize.min.css',
 				'css/currency-converter.css',
 				'images/cactus.png'
@@ -26,6 +25,10 @@ self.addEventListener('activate', event => {
 			)
 		)
 	);
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil(clients.claim());
 });
 
 self.addEventListener('fetch', event => {
