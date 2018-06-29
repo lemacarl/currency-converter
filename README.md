@@ -1,6 +1,6 @@
 # [Currency Converter](https://lemacarl.github.io/)
 
-A simple currency converter.
+A simple currency converter. The live site is hosted [here](https://lemacarl.github.io/)
 
 ## Features
 
