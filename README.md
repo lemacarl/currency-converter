@@ -1,6 +1,6 @@
-# [Currency Converter](https://lemacarl.github.io/)
+# Currency Converter
 
-A simple currency converter.
+A simple offline first progressive currency converter.
 
 ## Features
 
@@ -10,7 +10,9 @@ A simple currency converter.
 
 ## Installation
 
-* `git clone https://github.com/lemacarl/lemacarl.github.io.git currency-converter`
-* cd currency-converter
-* php -S localhost:8080
-* visit `http://localhost:8080/`
+```
+git clone https://github.com/lemacarl/currency-converter
+cd currency-converter
+php -S localhost:8080
+```
+Go to http://localhost:8080/
